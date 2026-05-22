@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import gspread
 from google.oauth2.service_account import Credentials
 from pydantic import BaseModel
-import request
+import requests
 
 scope = ["https://www.googleapis.com/auth/spreadsheets"]
 credentials = Credentials.from_service_account_file("service_account.json", scopes=scope)
