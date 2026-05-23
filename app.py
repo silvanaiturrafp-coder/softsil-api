@@ -9,7 +9,7 @@ scope = ["https://www.googleapis.com/auth/spreadsheets"]
 credentials = Credentials.from_service_account_file("/etc/secrets/credentials.json", scopes=scope)
 
 
-app = FasAPI()
+app = FastAPI()
 
 # -----------------------------
 # CONFIGURACIÓN
