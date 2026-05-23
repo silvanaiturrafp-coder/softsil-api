@@ -5,10 +5,8 @@ from pydantic import BaseModel
 import requests
 
 scope = ["https://www.googleapis.com/auth/spreadsheets"]
-credentials = Credentials.from_service_account_file("service_account.json", scopes=scope)
-client = gspread.authorize(credentials)
+credentials = Credentials.from_service_account_file("/etc/secrets/credentials.json", scopes=scope)
 
-sheet = client.open("datasheet softsil").worksheet("Hoja 1")
 
 app = FastAPI()
 
@@ -41,7 +39,9 @@ def home():
 # -----------------------------
 @app.post("/webhook")
 async def webhook(data: WebhookData):
-
+    client = gspread.authorize(credentials)
+    sheet = client.open("datasheet softsil").worksheet("Hoja 1")
+   
     prompt = f"""
     Clasifica este mensaje en:
     - Intención
